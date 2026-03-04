@@ -10,7 +10,7 @@ Feature: GET /usuarios - Listar Usuarios
     When method GET
     Then status 200
     And match response == { quantidade: '#number', usuarios: '#array' }
-    And match response.quantidade >= 0
+    And assert response.quantidade >= 0
 
   @positive
   Scenario: Listar usuarios con filtro por nombre

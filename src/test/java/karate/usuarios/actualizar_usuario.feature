@@ -6,12 +6,9 @@ Feature: PUT /usuarios/{_id} - Actualizar Usuario
 
   @smoke @positive
   Scenario: Actualizar usuario exitosamente
-    # Primero creamos un usuario
-    Given path '/usuarios'
-    And request testData.usuarioAdmin
-    When method POST
-    Then status 201
-    * def userId = response._id
+    # Primero creamos un usuario via helper
+    * def created = call read('classpath:karate/helpers.feature@CrearAdmin')
+    * def userId = created.userId
 
     # Luego lo actualizamos
     Given path '/usuarios/' + userId
@@ -30,12 +27,9 @@ Feature: PUT /usuarios/{_id} - Actualizar Usuario
 
   @negative
   Scenario: Actualizar usuario con email ya existente
-    # Primero creamos un usuario
-    Given path '/usuarios'
-    And request testData.usuarioAdmin
-    When method POST
-    Then status 201
-    * def userId = response._id
+    # Primero creamos un usuario via helper
+    * def created = call read('classpath:karate/helpers.feature@CrearAdmin')
+    * def userId = created.userId
 
     # Intentamos actualizar con email ya existente
     Given path '/usuarios/' + userId

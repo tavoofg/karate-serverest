@@ -6,12 +6,9 @@ Feature: GET /usuarios/{_id} - Buscar Usuario por ID
 
   @smoke @positive
   Scenario: Buscar usuario por ID exitosamente
-    # Primero creamos un usuario
-    Given path '/usuarios'
-    And request testData.usuarioAdmin
-    When method POST
-    Then status 201
-    * def userId = response._id
+    # Primero creamos un usuario via helper
+    * def created = call read('classpath:karate/helpers.feature@CrearAdmin')
+    * def userId = created.userId
 
     # Luego lo buscamos por ID
     Given path '/usuarios/' + userId

@@ -30,7 +30,7 @@ function fn() {
             password: 'newPass123',
             administrador: 'false'
         },
-        // ID inexistente para pruebas negativas
-        idInexistente: 'id_inexistente_qa_123'
+        // ID inexistente para pruebas negativas (debe ser exactamente 16 caracteres alfanuméricos)
+        idInexistente: 'idInexistente000'
     };
 }

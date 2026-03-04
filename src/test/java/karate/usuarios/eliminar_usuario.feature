@@ -6,12 +6,9 @@ Feature: DELETE /usuarios/{_id} - Eliminar Usuario
 
   @smoke @positive
   Scenario: Eliminar usuario exitosamente
-    # Primero creamos un usuario
-    Given path '/usuarios'
-    And request testData.usuarioAdmin
-    When method POST
-    Then status 201
-    * def userId = response._id
+    # Primero creamos un usuario via helper
+    * def created = call read('classpath:karate/helpers.feature@CrearAdmin')
+    * def userId = created.userId
 
     # Luego lo eliminamos
     Given path '/usuarios/' + userId

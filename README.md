@@ -52,17 +52,29 @@ mvn test
 
 ### Ejecutar solo tests @smoke:
 ```bash
+# bash/Linux/Mac
 mvn test -Dkarate.options="--tags @smoke"
+
+# PowerShell (Windows)
+mvn test '-Dkarate.options=--tags @smoke'
 ```
 
 ### Ejecutar solo tests positivos:
 ```bash
+# bash/Linux/Mac
 mvn test -Dkarate.options="--tags @positive"
+
+# PowerShell (Windows)
+mvn test '-Dkarate.options=--tags @positive'
 ```
 
 ### Ejecutar solo tests negativos:
 ```bash
+# bash/Linux/Mac
 mvn test -Dkarate.options="--tags @negative"
+
+# PowerShell (Windows)
+mvn test '-Dkarate.options=--tags @negative'
 ```
 
 ## Reporte
